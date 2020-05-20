@@ -10,6 +10,7 @@ Please find below the steps to reduce the bug.
   Convert the test written in a highlevel language to LLVM Assembly
                  
     $ clang -g -O2 huge-test.c -S -emit-llvm
+  
   Confirm the bug still exists
 
     $ llc -O2 huge-test.ll
@@ -20,6 +21,7 @@ Please find below the steps to reduce the bug.
   Simplify the case
 
     $ bugpoint -llc-safe huge-test.ll
+  
   Or additional arguments to the 'llc' tool could be passed as:
 
     $ bugpoint -llc-safe -safe-tool-args -mtriple=ppc-linux-gnueabi huge-test.ll
